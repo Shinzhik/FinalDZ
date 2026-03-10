@@ -4,6 +4,24 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
+TELEGRAM_TOKEN = "8630092556:AAEkrtbyFNbPLG4xJjCBSpQuPMkHqMSkIG4"
+CHAT_ID = "574556799"
+
+
+def send_telegram_alert(message):
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": message
+    }
+
+    try:
+        requests.post(url, data=payload)
+    except Exception as e:
+        print("Ошибка отправки Telegram:", e)
+
 # ---------- Загрузка логов ----------
 
 logs = []
@@ -36,7 +54,7 @@ print("\nПодозрительные IP:")
 
 for ip in suspicious_ips.index:
     print(f"Обнаружена подозрительная активность от IP: {ip}")
-    print(f"Имитация блокировки IP {ip}")
+    print(f"блокировка IP {ip}")
 
 
 # ---------- Проверка IP через VirusTotal API ----------
@@ -63,7 +81,10 @@ for ip in suspicious_ips.index:
             print(f"Malicious detections: {malicious}")
 
             if malicious > 0:
-                print(f"⚠️ Угроза обнаружена. Имитация блокировки {ip}")
+                print(f" Угроза обнаружена. Блокировка {ip}")
+
+                message = f"Обнаружена угроза!\nIP: {ip}\nMalicious detections: {malicious}"
+                send_telegram_alert(message)
             else:
                 print("Угроза не обнаружена")
 
