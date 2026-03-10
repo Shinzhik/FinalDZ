@@ -9,3 +9,4 @@
 API оставил исключительно для демонстрации, оставил для проверяющего. <img width="640" height="480" alt="ip_chart" src="https://github.com/user-attachments/assets/18a26a4f-e17b-475e-ae2e-bfeffb2e5771" />
 
 Также есть работа с API Telegram - нам дублируется туда сообщение (API и TG ID оставил тоже для демонстрации)
+<img width="1919" height="1079" alt="Screenshot_2" src="https://github.com/user-attachments/assets/523884da-212b-48b8-9337-9c02a620ad8f" />
